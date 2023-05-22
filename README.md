@@ -6,7 +6,7 @@ by [Rémi Bardenet](https://rbardenet.github.io/), [Michaël Fanuel](https://mrf
 
 ## Dependencies
 Python >= 3.8.2
-For sampling Ddeterminantal PPs
+For sampling Determinantal PPs
 - [qiskit](https://qiskit.org/) 
 - [numpy](https://numpy.org/) 
 - [matplotlib](https://matplotlib.org/)
@@ -19,4 +19,10 @@ For sampling Pfaffian PPs
 
 
 ## Jupyter notebooks for reproducing the paper figures
+
+- [slater_determinants.ipynb](https://github.com/For-a-few-DPPs-more/quantum-sampling-DPPs/blob/main/notebooks/slater_determinants.ipynb)
+reproduces the simulations of projection DPPs.
+
+- [pfaffian_sampling.ipynb](https://github.com/For-a-few-DPPs-more/quantum-sampling-DPPs/blob/main/notebooks/pfaffian_sampling.ipynb)
+reproduces simulations of projection DPP
 

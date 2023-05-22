@@ -3,7 +3,7 @@ We provide here notebooks associated with the manuscript
 
 [On sampling determinantal and Pfaffian point processes on a quantum computer]()
 
-by [Rémi Bardenet](https://rbardenet.github.io/), [Michaël Fanuel](https://mrfanuel.github.io/) and Alexandre Feller.
+by [Rémi Bardenet](https://rbardenet.github.io/), [Michaël Fanuel](https://mrfanuel.github.io/) and [Alexandre Feller]().
 
 
 ## Dependencies

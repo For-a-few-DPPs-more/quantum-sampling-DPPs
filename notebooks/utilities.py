@@ -66,13 +66,13 @@ def get_estimated_probabilities_pfaffian(L, J, counts, num_shots, N):
             for j in range(n_subset):
                 ind_i = indices[i]
                 ind_j = indices[j]
-                L_subset[2*i -1,2*j-1] = L[2*ind_i -1,2*ind_j-1]
-                L_subset[2*i -1,2*j] = L[2*ind_i -1,2*ind_j]
-                L_subset[2*i,2*j-1] = L[2*ind_i,2*ind_j-1]
                 L_subset[2*i,2*j] = L[2*ind_i,2*ind_j]
+                L_subset[2*i,2*j + 1] = L[2*ind_i,2*ind_j+ 1]
+                L_subset[2*i + 1,2*j] = L[2*ind_i + 1,2*ind_j]
+                L_subset[2*i + 1,2*j + 1] = L[2*ind_i + 1,2*ind_j + 1]
         
         if indices == ():
-            proba[indices] = const *(-1)
+            proba[indices] = const 
         else:
             proba[indices] = const * pf.pfaffian(L_subset).real
 

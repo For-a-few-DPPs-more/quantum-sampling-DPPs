@@ -1,9 +1,10 @@
 # quantum-sampling-DPPs
 We provide here notebooks associated with the manuscript 
 
-[On sampling determinantal and Pfaffian point processes on a quantum computer]()
+[On sampling determinantal and Pfaffian point processes on a quantum computer](http://arxiv.org/abs/2305.15851
+)
 
-by [Rémi Bardenet](https://rbardenet.github.io/), [Michaël Fanuel](https://mrfanuel.github.io/) and [Alexandre Feller]().
+by [Rémi Bardenet](https://rbardenet.github.io/), [Michaël Fanuel](https://mrfanuel.github.io/) and [Alexandre Feller](https://scholar.google.com/citations?user=K32-z_AAAAAJ&hl=fr).
 
 
 ## Dependencies

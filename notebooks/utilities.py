@@ -91,6 +91,49 @@ def get_estimated_probabilities_pfaffian(L, J, counts, num_shots, N):
             proba_estimated[indices] = 0.0
     return proba, proba_estimated
 
+def get_estimated_probabilities_pfaffian_K(pfK, J, counts, num_shots, N):
+    proba = {} # add empty set for compatibility with empty IBM measurements
+    proba_estimated = {}
+    num_samples = np.sum([counts[key] for key in counts])
+        
+    if not num_samples == num_shots:
+        print("Warning: expected num_shots is", num_shots, "but number of observed samples is", num_samples)
+    for indices in powerset(range(N)):
+        n_subset = len(indices)
+        I_subset = np.zeros((2*N,2*N), dtype=complex)
+        I_subset_bar = np.eye(2*N, dtype=complex)
+        
+        for i in range(n_subset):
+            ind_i = indices[i]
+            I_subset[2*ind_i,2*ind_i] = 1
+            I_subset[2*ind_i + 1,2*ind_i + 1] = 1
+
+        I_subset_bar = np.eye(2*N, dtype=complex) - I_subset
+        if indices == ():
+            M =  (J - pfK)
+            M = 0.5*(M-M.T)
+            proba[indices] = pf.pfaffian(M).real
+        else:
+            M = pfK - np.dot(J ,I_subset_bar)
+            #M = np.dot(pfK,I_subset) + np.dot( pfK - J ,I_subset_bar)
+            M = 0.5*(M-M.T)
+            proba[indices] = pow(-1,N - n_subset)*pf.pfaffian(M).real
+
+        # set estimated value
+        if indices == ():
+            key = "0"*N
+        else:
+            key_as_array = np.zeros(N, dtype="int")
+            key_as_array[N-np.array(indices)-1] = 1
+            key = ''
+            for entry in key_as_array:
+                key+=str(entry)
+        if key in counts:
+            proba_estimated[indices] = 1.0*counts[key] / num_samples
+        else:
+            proba_estimated[indices] = 0.0
+    return proba, proba_estimated
+
 def load_ibm_result_csv_file(file_name, column_name, num_shots):
     df = pd.read_csv(file_name, index_col="Measurement outcome")
     transform = lambda ss: tuple(np.where(list(reversed([int(s) for s in str(ss)])))[0])   
